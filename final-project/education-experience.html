@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Alice's Resume</title>
+        <link rel="icon" type="image/png" href="images/logo.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <!-- Read the Formbutton docs at formspree.io/formbutton/docs. See more examples at codepen.io/formspree -->
+        <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
+        <script>
+        /* paste this line in verbatim */
+        window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
+        /* customize formbutton below*/     
+        formbutton("create", {
+            action: "https://formspree.io/f/mqkonpyy",
+            title: "Any questions?",
+            fields: [
+            { 
+                type: "email", 
+                label: "Email:", 
+                name: "email",
+                required: true,
+                placeholder: "your@email.com"
+            },
+            {
+                type: "textarea",
+                label: "Message:",
+                name: "message",
+                placeholder: "What's on your mind?",
+            },
+            { type: "submit" }      
+            ],
+            styles: {
+            title: {
+                backgroundColor: "purple"
+            },
+            button: {
+                backgroundColor: "blue"
+            }
+            }
+        });
+        </script>
+    </head>
+
+    <body>
+    <div id="container">
+        <header>
+            <h1>Please hire me! </h1>
+
+            <nav>
+                <a href="index.html">about me</a>
+                <a href="experience.html">my experiences</a>
+            </nav>
+
+            <svg class="menu" viewBox="0 0 30 30" role="button">
+                <title>Navigation Menu Icon</title>
+                <line x1="8" x2="22" y1="12" y2="12" stroke="white" stroke-linecap="round" />
+                <line x1="8" x2="22" y1="18" y2="18" stroke="white" stroke-linecap="round" />
+                <line x1="8" x2="22" y1="24" y2="24" stroke="white" stroke-linecap="round" />
+            </svg>
+        </header>
+        
+        <main>
+            <a href="https://www.nyu.edu/"> <img class="nyu" src="images/nyu.png" srcset="images/nyu-2x.png 2x" width="300" height="304" alt="NYU"></a>
+
+            <form>
+                <label>
+                    First Name
+                    <input type = "text" name = "first-name" required>
+                </label>
+
+                <label> 
+                    Last Name 
+                    <input type = "text" name = "last-name" required>
+                </label>
+
+                <label>
+                    Email
+                    <input type = "email" name = "email" required>
+                </label>
+
+                <label>
+                    Message
+                    <textarea name = "message" cols="36" rows = "6" placeholder="Anything to send me?"></textarea>
+                </label>
+                <div>
+                    <input type="submit" value="Send">
+                </div>
+            </form>
+
+
+        </main>
+
+        <footer>
+            <p><a href="../index.html">Assignment for Web Design</a></p>
+        </footer>
+    </div> <!-- close #container -->
+    <script src = "navigation-3.js"></script>
+    </body>
+</html>
