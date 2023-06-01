@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WSP Restaurants</title>
+    <link rel="icon" type="image/webp" href="images/pizza.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+    <link rel="stylesheet" href="main.css">
+  </head>
+
+  <body>
+    <div id="container">
+      <header>
+        <h1><a href="index.html">Health Code Violations</a></h1>
+  
+        <nav>
+          <a href="health.html">More</a>
+          <a href="zipcode_12.html">Map</a>
+        </nav>
+  
+        <svg class="menu" viewBox="0 0 30 30" role="button">
+          <title>Navigation Menu Icon</title>
+          <line x1="8" x2="22" y1="12" y2="12" stroke="white" stroke-linecap="round" />
+          <line x1="8" x2="22" y1="18" y2="18" stroke="white" stroke-linecap="round" />
+          <line x1="8" x2="22" y1="24" y2="24" stroke="white" stroke-linecap="round" />
+        </svg>
+      </header>
+
+      <main>
+        <a href="health.html"> <img class="animal" src="images/monday.png" srcset="images/monday-2x.png 2x" width="200" height="200" alt="Image Based on the Day of the Week"></a>
+
+        <article>
+            <h2>Critical Flags Descriptions</h2>
+            <table>
+                <tr>
+                  <th>Health Code</th>
+                  <th>Violation Description </th>
+                </tr>
+                <tr class = "even">
+                  <td>02H</td>
+                  <td>After cooking or removal from hot holding, TCS food not cooled by an approved method</td>
+        
+                </tr>
+                <tr class = "odd">
+                  <td>02G</td>
+                  <td>Cold TCS food item held above 41 °F</td>
+        
+                </tr>
+                <tr class = "even">
+                  <td>04L</td>
+                  <td>Evidence of mice or live mice in establishment's food or non-food areas</td>
+        
+                </tr>
+                <tr class = "odd">
+                  <td>04K</td>
+                  <td>Evidence of rats or live rats in establishment's food or non-food areas</td>
+                </tr>
+                <tr class = "even">
+                  <td>04N</td>
+                  <td>Filth flies or food/refuse/sewage associated with (FRSA) flies or other nuisance pests  in  establishment’s food </td>
+                </tr>
+                <tr class = "odd">
+                    <td>06D</td>
+                    <td>Food contact surface not properly washed, rinsed and sanitized after each use </td>
+                </tr>
+                <tr class = "even">
+                    <td>04P</td>
+                    <td>Food containing a prohibited substance held, kept, offered, prepared, processed, packaged, or served</td>
+                </tr>
+                <tr class = "odd">
+                    <td>04A</td>
+                    <td>Food Protection Certificate (FPC) not held by manager or supervisor of food operations</td>
+                </tr>
+                <tr class = "even">
+                    <td>06C</td>
+                    <td>Food, supplies, or equipment not protected from potential source of contamination during storage </td>
+                </tr>
+                <tr class = "odd">
+                    <td>02B</td>
+                    <td>Hot TCS food item not held at or above 140 °F</td>
+                </tr>
+                <tr class = "even">
+                    <td>04M</td>
+                    <td>Live roaches in facility's food or non-food area.</td>
+                </tr>
+                <tr class = "odd">
+                  <td>05D</td>
+                  <td>No hand washing facility in or adjacent to toilet room or within 25 feet of a food preparation</td>
+                </tr>
+                <tr class = "even">
+                    <td>06A</td>
+                    <td>Personal cleanliness is inadequate. Outer garment soiled with possible contaminant</td>
+                </tr>
+                <tr class = "odd">
+                    <td>04J</td>
+                    <td>Properly scaled and calibrated thermometer or thermocouple not provided or not readily accessible in food preparation</td>
+                </tr>
+                <tr class = "even">
+                    <td>04H</td>
+                    <td>Raw, cooked or prepared food is adulterated, contaminated, cross-contaminated</td>
+                <tr class = "odd">
+                    <td>06E</td>
+                    <td>Sanitized equipment or utensil, including in-use food dispensing utensil, improperly used or stored</td>
+                </tr>
+                <tr class = "even">
+                    <td>06B</td>
+                    <td>Tobacco or electronic cigarette use, eating, or drinking from open container in food preparation</td>
+                </tr>
+                <tr class = "odd">
+                    <td>03F</td>
+                    <td>Unpasteurized milk or milk product (except certain aged cheese) served</td>
+                </tr>
+    
+            </table>
+        </article>
+
+        <article>
+            <h2>Restaurants with Violations</h2>
+            <div id="map">
+            <script>
+                var map = L.map('map').setView([40.73110329238371, -73.99735882431061],15);
+                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                }).addTo(map);
+
+                var marker = L.marker([40.72409702972389, -73.99381107294514]).addTo(map);
+                marker.bindPopup("<b>The Musket Room</b><br>06E").openPopup();
+
+                var marker = L.marker([40.72484455135471, -73.99466389992568]).addTo(map);
+                marker.bindPopup("<b>Estela</b><br>06D").openPopup();
+
+                var marker = L.marker([40.724623259286574, -74.00392108829135]).addTo(map);
+                marker.bindPopup("<b>Ba'al Cafe & Falafel</b><br>04L").openPopup();
+
+                var marker = L.marker([40.72894232614278, -74.00082418829129]).addTo(map);
+                marker.bindPopup("<b>Old Tbilisi Garden</b><br>04M").openPopup();
+
+                var marker = L.marker([40.72522134932675, -74.00359508643542]).addTo(map);
+                marker.bindPopup("<b>SUGARFISH by sushi nozawa</b><br>02B").openPopup();
+
+                var marker = L.marker([40.72161564893657, -73.99781021712805]).addTo(map);
+                marker.bindPopup("<b>Citizens Of Soho</b><br>04L").openPopup();
+
+                var marker = L.marker([40.733264536058286, -73.99797864410839]).addTo(map);
+                marker.bindPopup("<b>Mr. Capri</b><br>04A").openPopup();
+
+                var marker = L.marker([40.73440397644761, -73.99118600178139]).addTo(map);
+                marker.bindPopup("<b>Max Brenner Chocolate Bar</b><br>04N").openPopup();
+
+                var marker = L.marker([40.727206293450806, -73.98947319502093]).addTo(map);
+                marker.bindPopup("<b>Coffee Project New York</b><br>06D").openPopup();
+
+                var marker = L.marker([40.72790418256961, -73.98755285125631]).addTo(map);
+                marker.bindPopup("<bMiso Sushi</b><br>02G").openPopup();
+
+                var marker = L.marker([40.73538393036079, -73.9981802594546]).addTo(map);
+                marker.bindPopup("<b>La Contenta Oeste</b><br>04L").openPopup();
+
+                var marker = L.marker([40.72484933514418, -73.99839217480115]).addTo(map);
+                marker.bindPopup("<b>Lure Fishbar</b><br>02H").openPopup();
+
+                var marker = L.marker([40.72700249982184, -73.99328421701718]).addTo(map);
+                marker.bindPopup("<b>Vic's</b><br>02B").openPopup();
+
+                var marker = L.marker([40.72981551505161, -74.00096294225249]).addTo(map);
+                marker.bindPopup("<b>Greenwich Village Comedy Club</b><br>06E").openPopup();
+
+                var marker = L.marker([40.733489554781244, -73.99153804410837]).addTo(map);
+                marker.bindPopup("<b>Ribalta</b><br>02G").openPopup();
+
+                var marker = L.marker([40.73467823965524, -73.98963007302925]).addTo(map);
+                marker.bindPopup("<b>Le Cafe Coffee</b><br>04A").openPopup();
+
+                var marker = L.marker([40.72648237660906, -73.99456533912263]).addTo(map);
+                marker.bindPopup("<b>Cha Cha Matcha (NoHo)</b><br>06D").openPopup();
+
+                var marker = L.marker([40.72621660002152, -74.0033634366862]).addTo(map);
+                marker.bindPopup("<b>787 Coffee</b><br>04A").openPopup();
+
+                var marker = L.marker([40.72921722014647, -73.9918576901473]).addTo(map);
+                marker.bindPopup("<b>Joe's Pub</b><br>04L").openPopup();
+
+                var marker = L.marker([40.733063317079, -73.9938296287621]).addTo(map);
+                marker.bindPopup("<b>Amorino</b><br>04A").openPopup();
+
+                var marker = L.marker([40.72849002281846, -73.99930364596446]).addTo(map);
+                marker.bindPopup("<b>Terra Blues</b><br>06D").openPopup();
+
+                var marker = L.marker([40.73708730214111, -73.99680973061794]).addTo(map);
+                marker.bindPopup("<b>Bagel Buffet</b><br>04N").openPopup();
+
+                var marker = L.marker([40.72917029528813, -73.98815302876213]).addTo(map);
+                marker.bindPopup("<b>Kimura</b><br>04L").openPopup();
+
+                var marker = L.marker([40.72956332477686, -73.99829982876224]).addTo(map);
+                marker.bindPopup("<b>Negril Village</b><br>02B").openPopup();
+
+                var marker = L.marker([40.72535657994259, -74.00280902876229]).addTo(map);
+                marker.bindPopup("<b>Dominique Ansel Bakery</b><br>03F").openPopup();
+
+                var marker = L.marker([40.72604760140386, -74.00126952876228]).addTo(map);
+                marker.bindPopup("<b>Juice Press</b><br>04A").openPopup();
+
+                var marker = L.marker([40.73002321018047, -74.00047156002339]).addTo(map);
+                marker.bindPopup("<b>Van Leeuwen Ice Cream</b><br>04A").openPopup();
+
+                var marker = L.marker([40.72172850442361, -73.99426127294525]).addTo(map);
+                marker.bindPopup("<b>Peasant</b><br>06C").openPopup();
+
+                var marker = L.marker([40.72956039447776, -74.00084083247408]).addTo(map);
+                marker.bindPopup("<b>Nefista - ( LeyRa Chocolate )</b><br>04A").openPopup();
+
+                var marker = L.marker([40.736470003377235, -73.9973532748008]).addTo(map);
+                marker.bindPopup("<b>Murray's Bagels</b><br>04N").openPopup();
+
+                var marker = L.marker([40.72447690308036, -74.0038996306182]).addTo(map);
+                marker.bindPopup("<b>Ba'al Cafe & Falafel</b><br>06D").openPopup();
+
+                var marker = L.marker([40.723206610500284, -73.99564758643544]).addTo(map);
+                marker.bindPopup("<b>Bronson’s Burgers</b><br>06D").openPopup();
+
+                var marker = L.marker([40.72902258837746, -73.98815437480097]).addTo(map);
+                marker.bindPopup("<b>Yi Fang Taiwan Fruit Tea</b><br>04A").openPopup();
+
+                var marker = L.marker([40.72767171839892, -74.00047673061812]).addTo(map);
+                marker.bindPopup("<b>ZZ's Clam Bar</b><br>04A").openPopup();
+
+                var marker = L.marker([40.72951744198266, -74.00109796986678]).addTo(map);
+                marker.bindPopup("<b>Mint Masala</b><br>04L").openPopup();
+
+                var marker = L.marker([40.73496132017955, -73.99998785945459]).addTo(map);
+                marker.bindPopup("<b>Le Baratin</b><br>04L").openPopup();
+
+                var marker = L.marker([40.725450038023105, -73.9926312183502]).addTo(map);
+                marker.bindPopup("<b>Von</b><br>06D").openPopup();
+
+                var marker = L.marker([40.729616221717606, -74.0011392441085]).addTo(map);
+                marker.bindPopup("<b>Two Hands Fresh Corn Dogs</b><br>04L").openPopup();
+
+                var marker = L.marker([40.72887934316717, -73.98861654963139]).addTo(map);
+                marker.bindPopup("<b>Kung Fu Tea</b><br>06D").openPopup();
+
+                var marker = L.marker([40.72616625598688, -73.99161671197467]).addTo(map);
+                marker.bindPopup("<b>Gemma</b><br>06E").openPopup();
+
+                var marker = L.marker([40.72996880039591, -74.00030663061806]).addTo(map);
+                marker.bindPopup("<b>Meskerem</b><br>06C").openPopup();
+
+                var marker = L.marker([40.7307111508033, -73.99526973247409]).addTo(map);
+                marker.bindPopup("<b>Colomba bakery</b><br>06F").openPopup();
+
+                var marker = L.marker([40.724692310318616, -74.0031603441086]).addTo(map);
+                marker.bindPopup("<b>Piccola Cucina Estiatorio</b><br>02G").openPopup();
+
+                var marker = L.marker([40.72903331873145, -73.99835103061815]).addTo(map);
+                marker.bindPopup("<b>3 Giovani</b><br>02G").openPopup();
+
+                var marker = L.marker([40.726540910092616, -74.00213214410849]).addTo(map);
+                marker.bindPopup("<b>The Dutch</b><br>02B").openPopup();
+
+                var marker = L.marker([40.72754043757171, -74.00205273061823]).addTo(map);
+                marker.bindPopup("<b>Three of Cups</b><br>04N").openPopup();
+
+                var marker = L.marker([40.72912170977703, -74.00031594410842]).addTo(map);
+                marker.bindPopup("<b>Senza Gluten</b><br>06C").openPopup();
+
+                var marker = L.marker([40.72889678317528, -73.98786793063948]).addTo(map);
+                marker.bindPopup("<b>Chef Tan East Village</b><br>06F").openPopup();
+
+                var marker = L.marker([40.72983398472908, -73.99892692876217]).addTo(map);
+                marker.bindPopup("<b>Zinc Bar</b><br>04A").openPopup();
+
+                var marker = L.marker([40.72746812381734, -74.00042090178165]).addTo(map);
+                marker.bindPopup("<b>Arturo's Coal Oven Pizza</b><br>06C").openPopup();
+
+                var marker = L.marker([40.73322710927503, -73.98976611712784]).addTo(map);
+                marker.bindPopup("<b>Mocha Red Steakhouse + Mixology Bar</b><br>06D").openPopup();
+
+                var marker = L.marker([40.72941201882407, -73.98913220178163]).addTo(map);
+                marker.bindPopup("<b>Gem Bing Shop </b><br>04L").openPopup();
+
+                var marker = L.marker([40.73124041927057, -74.00034450178151]).addTo(map);
+                marker.bindPopup("<b>Red Bamboo</b><br>04L").openPopup();
+            </script>
+            </div>
+        </article>
+      </main>
+
+      <footer>
+        <p><a href="../index.html">Assignment for Web Design</a></p>
+      </footer>
+    </div> <!-- close #container -->
+    <script src = "navigation-3.js"></script>
+  </body>
+</html>
